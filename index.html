@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day, Bhawna! ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating hearts animation */
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(45deg);
+            animation: float 15s infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            left: -10px;
+        }
+
+        .heart::after {
+            top: -10px;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(45deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 60px 40px;
+            max-width: 800px;
+            margin: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .main-heart {
+            font-size: 80px;
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            10%, 30% {
+                transform: scale(1.1);
+            }
+            20%, 40% {
+                transform: scale(1);
+            }
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #d63384;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            color: #764ba2;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .message {
+            font-size: 1.2em;
+            color: #333;
+            line-height: 1.8;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .love-note {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+            border-left: 5px solid #d63384;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .love-note p {
+            color: #5a4a42;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .signature {
+            text-align: right;
+            font-style: italic;
+            color: #764ba2;
+            margin-top: 30px;
+            font-size: 1.3em;
+        }
+
+        .photo-frame {
+            width: 250px;
+            height: 250px;
+            margin: 30px auto;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 10px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4em;
+        }
+
+        .reasons {
+            margin: 40px 0;
+            text-align: left;
+        }
+
+        .reasons h2 {
+            color: #d63384;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .reason-item {
+            background: rgba(214, 51, 132, 0.1);
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 15px;
+            border-left: 4px solid #d63384;
+            transition: transform 0.3s ease;
+        }
+
+        .reason-item:hover {
+            transform: translateX(10px);
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #ffecd2;
+            color: #764ba2;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .container {
+                padding: 40px 20px;
+            }
+            
+            .main-heart {
+                font-size: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating hearts -->
+    <script>
+        for (let i = 0; i < 15; i++) {
+            let heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 15 + 's';
+            heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            document.body.appendChild(heart);
+        }
+    </script>
+
+    <div class="container">
+        <div class="main-heart">❤️</div>
+        <h1>Happy Valentine's Day</h1>
+        <div class="subtitle">To My Dearest Bhawna</div>
+
+        <div class="photo-frame">
+            💑
+        </div>
+
+        <div class="love-note">
+            <p>
+                Every moment with you feels like a beautiful dream that I never want to end. 
+                You bring light to my darkest days and joy to my heart in ways I never knew were possible.
+            </p>
+            <p>
+                This Valentine's Day, I want you to know that you are my everything – 
+                my best friend, my partner, my love, and my home.
+            </p>
+        </div>
+
+        <div class="reasons">
+            <h2>Why I Love You ❤️</h2>
+            <div class="reason-item">
+                <strong>Your Smile:</strong> It lights up my entire world and makes everything better
+            </div>
+            <div class="reason-item">
+                <strong>Your Kindness:</strong> The way you care for others inspires me every day
+            </div>
+            <div class="reason-item">
+                <strong>Your Strength:</strong> You face challenges with grace and determination
+            </div>
+            <div class="reason-item">
+                <strong>Your Love:</strong> The way you love me makes me feel like the luckiest person alive
+            </div>
+            <div class="reason-item">
+                <strong>Your Laughter:</strong> It's the most beautiful sound in the world to me
+            </div>
+            <div class="reason-item">
+                <strong>Being You:</strong> Simply being yourself is more than enough – you're perfect just as you are
+            </div>
+        </div>
+
+        <div class="message">
+            <p style="text-align: center; font-size: 1.3em; color: #d63384;">
+                <strong>"In you, I've found the love of my life and my closest, truest friend."</strong>
+            </p>
+        </div>
+
+        <div class="signature">
+            Forever Yours,<br>
+            With All My Love 💕
+        </div>
+
+        <div class="footer">
+            Made with ❤️ on Valentine's Day 2026<br>
+            For Bhawna, the love of my life
+        </div>
+    </div>
+</body>
+</html>
