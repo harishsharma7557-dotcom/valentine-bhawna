@@ -168,6 +168,50 @@
             align-items: center;
             justify-content: center;
             font-size: 4em;
+            overflow: hidden;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .gallery {
+            margin: 40px 0;
+        }
+
+        .gallery h2 {
+            color: #d63384;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            aspect-ratio: 1;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .reasons {
@@ -236,7 +280,7 @@
         <div class="subtitle">To My Dearest Bhawna</div>
 
         <div class="photo-frame">
-            💑
+            <img src="images/bhawna.jpg" alt="Bhawna" onerror="this.style.display='none'; this.parentElement.innerHTML='💑';">
         </div>
 
         <div class="love-note">
@@ -277,6 +321,55 @@
                 <strong>"In you, I've found the love of my life and my closest, truest friend."</strong>
             </p>
         </div>
+
+        <div class="gallery" id="photoGallery">
+            <h2>Our Beautiful Memories Together 📸</h2>
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Photos will be loaded here -->
+            </div>
+        </div>
+
+        <script>
+            // List of gallery photos - add your photo filenames here
+            const galleryPhotos = [
+                'images/gallery/photo1.jpg',
+                'images/gallery/photo2.jpg',
+                'images/gallery/photo3.jpg',
+                'images/gallery/photo4.jpg',
+                'images/gallery/photo5.jpg',
+                'images/gallery/photo6.jpg'
+            ];
+
+            const galleryGrid = document.getElementById('galleryGrid');
+            const photoGallery = document.getElementById('photoGallery');
+            let loadedPhotos = 0;
+
+            // Try to load each photo
+            galleryPhotos.forEach((photoSrc, index) => {
+                const img = new Image();
+                img.onload = function() {
+                    const galleryItem = document.createElement('div');
+                    galleryItem.className = 'gallery-item';
+                    galleryItem.style.animationDelay = (index * 0.1) + 's';
+                    
+                    const imgElement = document.createElement('img');
+                    imgElement.src = photoSrc;
+                    imgElement.alt = `Memory ${index + 1}`;
+                    
+                    galleryItem.appendChild(imgElement);
+                    galleryGrid.appendChild(galleryItem);
+                    loadedPhotos++;
+                };
+                img.src = photoSrc;
+            });
+
+            // Hide gallery section if no photos are loaded
+            setTimeout(() => {
+                if (loadedPhotos === 0) {
+                    photoGallery.style.display = 'none';
+                }
+            }, 2000);
+        </script>
 
         <div class="signature">
             Forever Yours,<br>
